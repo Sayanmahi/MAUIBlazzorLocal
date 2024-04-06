@@ -1,0 +1,41 @@
+﻿@page "/cart/edit/{id:int}"
+@using MAUILocal.Services
+@using MAUILocal.Model
+@inject ICartService db
+@inject NavigationManager nav
+<div class="disp">
+    <EditForm Model="cat" OnValidSubmit="Edit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <h2>@cat.itemname</h2>
+            <img src="@cat.imgur" class="imgg" />
+        <h4>Price: Rs @cat.totalPrice</h4>
+        <div class="form-group">
+            <lable>Quantity</lable>
+            <InputNumber @bind-Value="cat.qty" class="form-control"></InputNumber>
+        </div>
+        <div class="form-group py-2">
+            <button class="btn btn-success" type="submit">Save Changes</button>
+            <NavLink href="cart/mycart" class="btn btn-secondary">Back</NavLink>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    Cart cat = new Cart();
+    protected override void OnInitialized()
+    {
+
+        cat = db.GetCartItem(id);
+
+    }
+    private void Edit()
+    {
+        var d = db.ChangeQuantity(cat.id, cat.qty);
+
+            nav.NavigateTo("cart/mycart");
+
+    }
+}

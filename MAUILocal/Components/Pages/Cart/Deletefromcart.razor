@@ -1,0 +1,16 @@
+﻿@page "/cart/deletefromcart/{id:int}"
+@using MAUILocal.Services
+@inject ICartService db
+@inject NavigationManager nav
+@inject IJSRuntime _jsrun
+@code {
+    [Parameter]
+    public int id { get; set; }
+    protected override void OnInitialized()
+    {
+            var d = db.Delete(id);
+            nav.NavigateTo("cart/mycart");
+
+    } 
+
+}

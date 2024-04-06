@@ -1,0 +1,41 @@
+﻿@page "/cart/mycart"
+@using MAUILocal.Services
+@using MAUILocal.Model
+@inject ICartService db
+<div class="disp"><h2>My Cart(@cartno Items)</h2></div>
+<div class="container">
+    <div class="card">
+        @foreach (var d in cat)
+        {
+            <div class="content">
+                <h2>@d.itemname</h2>
+                <div class="img-wt-des">
+                    <img src="@d.imgur" class="imgg" />
+                    <div class="des">
+                        <h5><b>Quantity: </b>@d.qty <br /> <b>Price:</b>Rs @d.totalPrice</h5>
+                    </div>
+                </div>
+                <br />
+
+
+
+                <NavLink href="@($"order/placeorder/{d.id}")" class="buttongreen">Placeorder</NavLink>
+                <NavLink href="@($"cart/edit/{d.id}")" class="buttonbrown">Edit Item</NavLink>
+                <br/>
+                <NavLink href="@($"cart/deletefromcart/{d.id}")" class="buttongreen">Delete</NavLink>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
+
+@code {
+    List<Cart> cat = new List<Cart>();
+    public int cartno = 0;
+    protected override void OnInitialized()
+    {
+        cat = db.GetAll();
+        cartno = db.CountItems();
+    }
+
+}

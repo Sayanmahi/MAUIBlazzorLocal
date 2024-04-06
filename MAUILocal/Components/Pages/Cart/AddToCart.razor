@@ -1,0 +1,38 @@
+﻿@page "/cart/addtocart/{id:int}"
+@using MAUILocal.Services
+@inject ICartService db
+@inject NavigationManager nav
+@using MAUILocal.Model
+<div class="disp">
+    <EditForm Model="q" OnValidSubmit="Add">
+    <div class="form-group">
+        <lable>Please Provide the quantity</lable>
+        <InputNumber @bind-Value="q.qty" class="form-control"></InputNumber>
+    </div>
+
+        <div class="form-group py-2">
+        <button class="btn btn-success" type="submit">Add to Cart</button>
+        </div>
+
+    </EditForm>
+
+    </div>
+@code {
+    [Parameter]
+    public int id { get; set; }
+    QuantityDTO q = new QuantityDTO();
+    private async void Add()
+    {
+       
+            Cart cart = new Cart();
+            cart.itemId = id;
+            cart.qty = q.qty;
+            cart.username = "Sayan";
+            var d = db.AddToCart(cart);
+            nav.NavigateTo("cart/mycart");
+        
+
+
+    }
+
+}

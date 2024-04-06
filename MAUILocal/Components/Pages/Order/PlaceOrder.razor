@@ -1,0 +1,31 @@
+﻿@page "/order/placeorder/{cartid:int}"
+@using MAUILocal.Services
+@using MAUILocal.Model
+@inject IOrderService db
+@inject ICartService db1
+@inject NavigationManager nav
+@inject IJSRuntime _jsrun
+<h3>PlaceOrder</h3>
+
+@code {
+    [Parameter]
+    public int cartid { get; set; }
+    protected override void OnInitialized()
+    {
+
+        var d = db1.GetCartItem(cartid);
+        Order order = new Order();
+        order.id = d.id;
+        order.itemId = d.itemId;
+        order.itemname = d.itemname;
+        order.imgur = d.imgur;
+        order.qty = d.qty;
+        order.totalPrice = d.totalPrice;
+        order.username = d.username;
+        var data = db.PlaceOrder(order);
+        nav.NavigateTo("order/myorder");
+
+
+    }
+
+}

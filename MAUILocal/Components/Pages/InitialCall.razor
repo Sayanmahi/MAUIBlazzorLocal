@@ -1,0 +1,15 @@
+﻿@page "/it"
+@inject NavigationManager nav
+@using MAUILocal.Data
+
+<h3>InitialCall</h3>
+
+@code {
+    protected override void OnInitialized()
+    {
+        var it = ItemData.Data;
+        var car = CartData.Data;
+        nav.NavigateTo("/home");
+    }
+
+}

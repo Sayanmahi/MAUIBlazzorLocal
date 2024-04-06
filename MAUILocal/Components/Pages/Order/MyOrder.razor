@@ -1,0 +1,45 @@
+﻿@page "/order/myorder"
+@using MAUILocal.Services
+@using MAUILocal.Model
+@inject IOrderService db
+@inject NavigationManager nav
+
+<div class="row mt-4">
+    <br />
+    <br />
+    <div class="disp"><h4>All Orders</h4></div>
+    <div class="container">
+        <div class="card">
+        @if (cat.Any())
+        {
+                    @foreach (var d in cat)
+                    {
+                        
+                         <div class="content">
+                         <h2><b>@d.itemname</b></h2>
+                         <img src="@d.imgur" class="imgg"/>
+                         <p><b>Quantity:</b>@d.qty  <b>Amount:</b>Rs. @d.totalPrice.00  <br/> <b>Order Date:</b> @d.date</p>
+                               
+                                <hr/>
+                         </div>
+                    }
+           
+        }
+        else
+        {
+            <h4 class="card-title text-black-info">No Orders Found.</h4>
+        }
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Order> cat = new List<Order>();
+    protected override void OnInitialized()
+    {
+
+        cat = db.GetMyOrders();
+
+    }
+
+}
