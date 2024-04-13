@@ -1,0 +1,39 @@
+﻿@page "/item/getallitem"
+@using MAUILocal.Services
+@using MAUILocal.Model
+@inject IItemService db;
+
+            @foreach(var d in cat)
+            {
+    <div class="fooddispcont">
+               <img class="getitems" src="@d.imgur"/>
+               <div>
+            <h6 style="text-align:center"><b>@d.prodname</b></h6>
+            <p class="display-portion">@d.description</p>
+            <h8><b>Price:</b> Rs. @d.price</h8>
+                   </div>
+                   
+        
+        <br/>
+        
+        </div>
+    <NavLink href="@($"order/placeorder/{d.id}")" class="buttonsmall">See Item</NavLink>
+        <hr />
+            }
+        
+
+
+
+
+@code {
+    private List<Items> cat = new List<Items>();
+    public int t { get; set; } = 0;
+    protected override void OnInitialized()
+    {
+        cat = db.GetAllItems();
+    }
+    private void cha()
+    {
+        t = 1;
+    }
+}

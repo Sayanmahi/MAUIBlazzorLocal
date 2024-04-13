@@ -123,7 +123,7 @@ h1:focus {
     align-content: left;
     transition: 0.3s;
     width: 100%;
-    margin: 20px;
+    margin: 10px;
 }
 
 
@@ -141,6 +141,7 @@ h1:focus {
 .imgg {
     width: 180px;
     height: 130px;
+    padding:2px 0px 1px 4px;
 }
 
 .imggflex {
@@ -278,4 +279,67 @@ h1:focus {
     border: 2px;
     background-color: aqua;
     font-weight: bold;
+}
+.partial-string {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px; /* Adjust as per your requirement */
+}
+.hfimg {
+    width: 100%;
+    height: auto; /* or set a specific height */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    top: 0;
+}
+.hfimgrev {
+    width: 100%;
+    height: auto; /* or set a specific height */
+    padding:2px 0px 1px 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    top: 0;
+}
+
+.fooddispcont {
+    display: flex;
+}
+
+.fooddisp {
+    border-radius: 50%;
+    width: 75px; /* Adjust the width as needed */
+    height: 75px; /* Adjust the height as needed */
+    margin-right: 20px; /* Adjust the spacing between images */
+}
+
+.getitems{
+    border-radius:5px;
+    width:80px;
+    height:80px;
+    padding:6px 4px 0px 0px;
+}
+.display-portion {
+    width: 210px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    padding:0px;
+}
+.buttonsmall {
+    background-color: forestgreen;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    width: 80px;
+    height: 30px;
 }
