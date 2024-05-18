@@ -18,5 +18,11 @@ namespace MAUILocal.Services
         {
             return ItemData.d;
         }
+
+        public Items getItemById(int id)
+        {
+            var d = ItemData.d.FirstOrDefault(x => x.id == id);
+            return (d);
+        }
     }
 }

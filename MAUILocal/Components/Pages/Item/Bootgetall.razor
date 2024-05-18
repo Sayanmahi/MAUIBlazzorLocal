@@ -10,14 +10,17 @@
                <div>
             <h6 style="text-align:center"><b>@d.prodname</b></h6>
             <p class="display-portion">@d.description</p>
-            <h8><b>Price:</b> Rs. @d.price</h8>
+            <div style="display:flex">
+            <p><b>Price:</b> Rs. @d.price</p>
+            <p style="padding:0px 0px 0px 25px">&#9733;4.5</p>
+            </div>
+            <NavLink href="@($"item/getitembyid/{d.id}")" class="buttonsmall">View Item</NavLink>
+
                    </div>
-                   
-        
-        <br/>
+
         
         </div>
-    <NavLink href="@($"order/placeorder/{d.id}")" class="buttonsmall">See Item</NavLink>
+    
         <hr />
             }
         

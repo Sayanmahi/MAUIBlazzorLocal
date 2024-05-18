@@ -10,5 +10,6 @@ namespace MAUILocal.Services
     public interface IItemService
     {
         public List<Items> GetAllItems();
+        public Items getItemById(int id);
     }
 }
